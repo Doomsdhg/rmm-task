@@ -1,12 +1,27 @@
 <mat-toolbar>
   <span>Menu</span>
   <span class="flex-1"></span>
-  <button mat-icon-button>
+  <button mat-icon-button
+          (click)="deleteCurrentApp()">
     <mat-icon>remove</mat-icon>
   </button>
-  <button mat-icon-button>
+  <button mat-icon-button
+          (click)="addApp()">
     <mat-icon>add</mat-icon>
   </button>
 </mat-toolbar>
 
 <!--Your code here-->
+
+<ul class="grid grid-columns-auto-fit gap-4 justify-center"
+    #grid>
+  <li *ngFor="let app of (apps$ | async)"
+      class="container flex flex-col justify-center w-48 p-2"
+      [ngClass]="{'bg-green-500': (current_app$ | async)?.id === app.id}">
+    <div class="flex justify-center items-center self-center w-40 h-40 bg-slate-400">
+      <mat-icon>{{app.icon}}</mat-icon>
+    </div>
+
+    <h3 class="flex justify-center">{{app.name}}</h3>
+  </li>
+</ul>

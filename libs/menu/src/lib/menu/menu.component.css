@@ -1,3 +1,7 @@
 :host {
   @apply block resize overflow-scroll min-h-[200px] min-w-[200px] h-[300px] w-[400px] border-[1px]
 }
+
+.grid-columns-auto-fit {
+  grid-template-columns: repeat(auto-fit, 180px);
+}
